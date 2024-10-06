@@ -25,7 +25,6 @@ def create_data() -> DataFrame:
     return spark.createDataFrame(data)
 
 
-
 if __name__ == "__main__":
     import doctest
 

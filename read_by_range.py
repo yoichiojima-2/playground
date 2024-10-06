@@ -7,13 +7,13 @@ from pyspark.sql import DataFrame
 
 spark: SparkSession = SparkSession.builder.getOrCreate()
 
+
 @dataclass
 class S3Client:
     available_path: list[str]
     unavailable_path: list[str]
 
-    def check_exsistance_by_range(self, start_date: date, end_date: date) -> bool:
-        ...
+    def check_exsistance_by_range(self, start_date: date, end_date: date) -> bool: ...
 
 
 @dataclass
@@ -23,4 +23,6 @@ class ParquetReader:
 
     def read_by_range(self, start_date: date, end_date: date) -> DataFrame:
         self.s3_client.check_exsistance_by_range(start_date, end_date)
-        return spark.read.set_option("basePath", self.path).parquet(self.s3_client.available_path)
+        return spark.read.set_option("basePath", self.path).parquet(
+            self.s3_client.available_path
+        )
