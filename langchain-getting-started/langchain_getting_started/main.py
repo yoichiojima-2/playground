@@ -1,24 +1,24 @@
 import os
-
 from dotenv import load_dotenv
-from langchain.prompts import PromptTemplate
-from langchain_openai import OpenAI
+from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_openai import ChatOpenAI
 
+# load api key
+load_dotenv()
+assert os.getenv("OPENAI_API_KEY")
 
-def main():
-    load_dotenv()
+# instanciate model
+model = ChatOpenAI(model="gpt-4o-mini")
 
-    prompt = PromptTemplate(
-        input_variables=["product"],
-        template="What is a good name for a company that makes {product}?",
-    )
+# build messages
+message =[
+    SystemMessage(content="you are a translator who translate english to japanese"),
+    HumanMessage(content="hello")
+]
 
-    llm = OpenAI(openai_api_key=os.getenv("OPENAI_API_KEY"))
-    chain = prompt | llm
+# api call
+res = model.invoke(message)
 
-    response = chain.invoke("colorful socks")
-    print(response)
-
-
-if __name__ == "__main__":
-    main()
+# display response
+from pprint import pprint
+pprint(res)
