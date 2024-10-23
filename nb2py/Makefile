@@ -1,5 +1,5 @@
 CONVERTED = converted
-NOTEBOOKS = 01_01_greet.ipynb 01_02_greet_2.ipynb
+NOTEBOOKS = $(wildcard *.ipynb)
 
 convert-dir:
 	-mkdir -p $(CONVERTED)
