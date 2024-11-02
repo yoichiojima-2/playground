@@ -11,9 +11,9 @@ assert os.getenv("OPENAI_API_KEY")
 model = ChatOpenAI(model="gpt-4o-mini")
 
 # build messages
-message =[
+message = [
     SystemMessage(content="you are a translator who translate english to japanese"),
-    HumanMessage(content="hello")
+    HumanMessage(content="hello"),
 ]
 
 # api call
@@ -21,4 +21,5 @@ res = model.invoke(message)
 
 # display response
 from pprint import pprint
+
 pprint(res)
