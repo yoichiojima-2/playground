@@ -17,6 +17,7 @@ def extract_python_code(stdout: str) -> str:
 
 def improve_code(path: Path) -> None:
     print("improving code...")
+
     output = run(f"python {path}", shell = True, encoding="utf-8").stdout
     prompt = (
         "i will give you a result of a python script that you previously generated. "
@@ -26,13 +27,12 @@ def improve_code(path: Path) -> None:
         f"result-output: {output}"
     )
     command = f"{openai_rust_bin} code \"{prompt}\""
-    print(command)
-
     stdout = run(command, shell=True, capture_output=True, encoding="utf-8").stdout
+
     refined_file = history_dir / f"{datetime.now().strftime("%Y%m%d%H%M%S")}.py"
     refined_file.write_text(extract_python_code(stdout))
-    print("saved improved code...")
 
+    print(f"saved improved code: {refined_file}")
     return refined_file
 
 
