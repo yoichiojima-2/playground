@@ -33,9 +33,9 @@ def improve_code(path: Path) -> None:
     output = run_command(f"python {path}")
     print("output", output)
     prompt = (
-        "i will give you a python script that you previously generated and its stdout. "
-        "please improve a code in a creative way that you can imagine. it is okay to write a code that "
-        "does completely different thing when it is hard to improve. the main purpose is to see you doing impressive thing. "
+        "i will give you a python code that you previously generated and its stdout. "
+        "please improve the code in a creative way that you can imagine. it is okay to write a code that "
+        "does completely different thing when it is hard to improve. the main purpose is to see you doing impressive things. "
         "your response will be executed as it is. make sure your response is always a pure python code. "
         "and please leave comments to let reader know what you tried to do.\n"
         "[your-code]\n"
