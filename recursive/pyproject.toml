@@ -1,12 +1,14 @@
 [tool.poetry]
-name = "neural-network"
+name = "recursive"
 version = "0.1.0"
 description = ""
 authors = ["Yoichi Ojima <yoichiojima@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
+dateutils = "^0.6.12"
+ipython = "^8.29.0"
 
 
 [build-system]
