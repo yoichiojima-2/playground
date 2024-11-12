@@ -15,9 +15,16 @@ def extract_python_code(stdout: str) -> str:
     else:
         return stdout
 
+
 def run_command(command):
     print(command)
-    return subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8").stdout
+    return subprocess.run(
+        command,
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        encoding="utf-8",
+    ).stdout
 
 
 def improve_code(path: Path) -> None:
@@ -36,7 +43,7 @@ def improve_code(path: Path) -> None:
         "[result-output]\n"
         f"{output}\n"
     )
-    command = f"{openai_rust_bin} code \"{prompt}\""
+    command = f'{openai_rust_bin} code "{prompt}"'
     output = run_command(command)
 
     refined_file = history_dir / f"{datetime.now().strftime("%Y%m%d%H%M%S")}.py"
@@ -53,7 +60,7 @@ def main():
         "make sure your response is a executable python code otherwise it does not work."
     )
 
-    command = f"{openai_rust_bin} code \"{first_prompt}\""
+    command = f'{openai_rust_bin} code "{first_prompt}"'
 
     stdout = run_command(command)
 

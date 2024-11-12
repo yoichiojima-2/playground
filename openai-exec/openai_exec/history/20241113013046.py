@@ -3,7 +3,7 @@
 text = "Hello, how are you? I am just testing this script to see how it works. Let's have fun with it!"
 
 # Removing punctuation and converting text to lowercase
-cleaned_text = ''.join(char.lower() if char.isalpha() else ' ' for char in text)
+cleaned_text = "".join(char.lower() if char.isalpha() else " " for char in text)
 
 # Splitting the text into words
 words = cleaned_text.split()
@@ -17,6 +17,8 @@ for word in words:
         word_freq[word] = 1
 
 # Sorting the words by frequency in descending order
-sorted_word_freq = {k: v for k, v in sorted(word_freq.items(), key=lambda item: item[1], reverse=True)}
+sorted_word_freq = {
+    k: v for k, v in sorted(word_freq.items(), key=lambda item: item[1], reverse=True)
+}
 
 print(sorted_word_freq)
